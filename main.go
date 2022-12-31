@@ -8,12 +8,13 @@ import (
 	"time"
 )
 
+const QTD_NUMEROS = 7
+
 func main() {
 
 	fmt.Println("#############################################")
 	fmt.Println("###          SEQUÊNCIA GERADA:          #####")
 	fmt.Println("#############################################")
-	fmt.Println("###     ", gerarSequencia(), "     ###")
 	fmt.Println("###     ", gerarSequencia(), "     ###")
 	fmt.Println("###     ", gerarSequencia(), "     ###")
 	fmt.Println("#############################################")
@@ -23,7 +24,7 @@ func main() {
 
 func gerarSequencia() string {
 	var lista []string
-	for i := 0; i < 6; i++ {
+	for i := 0; i < QTD_NUMEROS; i++ {
 
 		gerado := sorteiaNumero()
 		for existeNaLista(lista, gerado) {
@@ -57,8 +58,9 @@ func sorteiaNumero() int {
 	r1 := rand.New(s1)
 
 	gerado := r1.Intn(60)
-	if gerado == 0 {
+	for gerado <= 0 {
 		gerado = r1.Intn(60)
 	}
+
 	return gerado
 }
